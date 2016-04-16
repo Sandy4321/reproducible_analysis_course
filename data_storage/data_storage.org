@@ -18,7 +18,7 @@
   :PROPERTIES:
   :reveal_background: LNBL_scanner_1.jpg
   :END:
-  #+REVEAL_HTML: <style>  #orgheadline2 {display: none} </style>
+  #+REVEAL_HTML: <style>  #orgheadline2 {opacity: 0} </style>
 * Введение
   + Без данных исследование не может быть (вос)произведено.
   + Изменяемые (mutable) данные качественно затрудняют воспроизведение
@@ -62,9 +62,9 @@
    :PROPERTIES:
    :reveal_background: WLCG-snapshot-28112013.jpg
    :END:
-   #+REVEAL_HTML: <style>  #orgheadline9, #slide-orgheadline9 {background-color: white;} </style>
    + 30 Пб в год
    + 170 дата-центров, 42 страны
+   #+REVEAL_HTML: <style>  #orgheadline9, #slide-orgheadline9 {background-color: white;} </style>
 ** Уроки из ЦЕРНа
    + Данные можно фильтровать. ЦЕРН выбрасывает 99.99%.
    + Обработка должна быть возможно более параллельной. В ЦЕРНе
@@ -99,3 +99,4 @@
      источник. Есть варианты. Допустимо ли коммерческое использование?
      Разрешены ли производные произведения, должны ли они
      распространяться под той же лицензией?
+
