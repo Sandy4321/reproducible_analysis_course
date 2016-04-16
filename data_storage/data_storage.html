@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<title>Хранение даных воспроизводимого эксперимента</title>
+<meta name="author" content="(Андрей Устюжанин, Никита Казеев)"/>
+<style type="text/css">
+.underline { text-decoration: underline; }
+</style>
+<link rel="stylesheet" href="file:////home/kna/reveal.js-3.2.0/css/reveal.css"/>
+<link rel="stylesheet" href="file:////home/kna/reveal.js-3.2.0/css/theme/csc_rep.css" id="theme"/>
+
+<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+<script>
+    if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'file:////home/kna/reveal.js-3.2.0/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    }
+</script>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+<section id="sec-title-slide">
+<h2>Хранение даных воспроизводимого эксперимента</h2> Андрей Устюжанин, Никита Казеев, <a href="mailto:kazeevn@yandex-team.ru">kazeevn@yandex-team.ru</a> <br> 16.04.2016
+</section>
+
+<section>
+<section id="slide-orgheadline1">
+<h2 id="orgheadline1"><span class="section-number-2">1</span> Про сложность науки (другой взгляд)</h2>
+<ul>
+<li>Сложность растёт. В XIX учёный знал всё, сейчас это невозможно.</li>
+<li>Потребность в неквалифицированном труде падает.</li>
+<li>Междисциплинарная коллаборация.</li>
+<li>А для коллаборации необходима воспроизводимость.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline2" data-background="LNBL_scanner_1.jpg">
+<h2 id="orgheadline2"><span class="section-number-2">2</span> Manual labour</h2>
+<style>  #orgheadline2 {display: none} </style>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline3">
+<h2 id="orgheadline3"><span class="section-number-2">3</span> Введение</h2>
+<ul>
+<li>Без данных исследование не может быть (вос)произведено.</li>
+<li>Изменяемые (mutable) данные качественно затрудняют воспроизведение</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline6">
+<h2 id="orgheadline6"><span class="section-number-2">4</span> Данные помещаются в RAM</h2>
+<ul>
+<li>Не проблема</li>
+<li>Файл на облачном диске, web-сервере, и т.д.</li>
+<li>Версионирование?</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline4">
+<h3 id="orgheadline4"><span class="section-number-3">4.1</span> Формат</h3>
+<ul>
+<li>.csv.gz, .json.gz: кросс-платформенные, гибкие, интерпретируемые,
+медленные</li>
+<li>HDF5, ROOT: бинарные, кросс-платформенные</li>
+<li>Формат Вашего инструмента. Если Вы уверенны, что сможете прочесть
+его в будущих версиях - особенно актуально для закрытых
+(proprietary) форматов.</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline5">
+<h3 id="orgheadline5"><span class="section-number-3">4.2</span> Git Large File Storage</h3>
+<ul>
+<li>Версионирование больших файлов</li>
+<li>Прозрачная интеграция с git без существенного увеличения размера репозитория</li>
+<li>Код клиента и сервера <a href="https://git-lfs.github.com/">открыт</a></li>
+<li><a href="https://github.com/yandexdataschool/reproducible_analysis_course/blob/py3/data_storage/data_storage.pdf">Пример</a> в репозитории курса</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline11">
+<h2 id="orgheadline11"><span class="section-number-2">5</span> Данные не помещаются в RAM</h2>
+<ul>
+<li>"Big Data", "NoSQL"</li>
+<li>Распределённые системы</li>
+<li>Горизонтальная масштабируемость</li>
+<li>Устойчивость к отказу оборудования</li>
+<li>Выбор зависит от задачи</li>
+
+</ul>
+
+</section>
+<section id="slide-orgheadline7">
+<h3 id="orgheadline7"><span class="section-number-3">5.1</span> Hadoop</h3>
+<ul>
+<li>Масштабируем</li>
+<li>Стар и отлажен</li>
+<li>Устойчив к сбоям</li>
+<li>Open Source</li>
+<li>Заточен под парадигму MapReduce</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline8">
+<h3 id="orgheadline8"><span class="section-number-3">5.2</span> Other NoSQL</h3>
+<ul>
+<li>Выбор зависит от задачи. Предмет для отдельного курса.</li>
+<li>Общий принцип - чем проще операции, тем быстрее и надёжнее система</li>
+<li>Redis, HBase, Cassandra, Elastic, &#x2026;</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline9" data-background="WLCG-snapshot-28112013.jpg">
+<h3 id="orgheadline9"><span class="section-number-3">5.3</span> CERN GRID</h3>
+<style>  #orgheadline9, #slide-orgheadline9 {background-color: white;} </style>
+<ul>
+<li>30 Пб в год</li>
+<li>170 дата-центров, 42 страны</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline10">
+<h3 id="orgheadline10"><span class="section-number-3">5.4</span> Уроки из ЦЕРНа</h3>
+<ul>
+<li>Данные можно фильтровать. ЦЕРН выбрасывает 99.99%.</li>
+<li>Обработка должна быть возможно более параллельной. В ЦЕРНе
+алгоритмы применяются к большому количеству независимых объектов
+одной природы. В результате возможно географическая
+распределённость.</li>
+<li>Локальность. Стоит обрабатывать данные там же, где они хранятся.</li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline12">
+<h2 id="orgheadline12"><span class="section-number-2">6</span> Долговременное хранение</h2>
+<ul>
+<li>Магнитные ленты</li>
+<li>Не обязательно у себя - <a href="https://aws.amazon.com/ru/glacier/">Amazon Glacier</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline15">
+<h2 id="orgheadline15"><span class="section-number-2">7</span> Публикация данных</h2>
+<ul>
+<li>Необходима, чтобы другие могли ими воспользоваться.</li>
+<li>Будут ли они доступны через 30 лет?</li>
+<li>Будет ли их просто найти?</li>
+<li>Будет ли у пользователей простой способ сослаться на источник?</li>
+
+</ul>
+</section>
+<section id="slide-orgheadline13">
+<h3 id="orgheadline13"><span class="section-number-3">7.1</span> Много аналогичных порталов</h3>
+<ul>
+<li><a href="https://data.mendeley.com/">https://data.mendeley.com/</a></li>
+<li><a href="https://www.dataone.org/">https://www.dataone.org/</a></li>
+<li><a href="http://www.openml.org/">http://www.openml.org/</a></li>
+<li><a href="https://zenodo.org/">https://zenodo.org/</a></li>
+
+</ul>
+</section>
+<section id="slide-orgheadline14">
+<h3 id="orgheadline14"><span class="section-number-3">7.2</span> Порталы с открытыми данными</h3>
+<ul>
+<li><a href="http://www.openml.org/">http://www.openml.org/</a> - мощный API, идеально для meta learning</li>
+<li><a href="https://scihub.copernicus.eu/">https://scihub.copernicus.eu/</a> - спутниковые фотографии</li>
+<li><a href="https://kaggle.com/">https://kaggle.com/</a> - сообщество, реальные задачи с решениями</li>
+<li><a href="http://opendata.cern.ch/">http://opendata.cern.ch/</a> - физика частиц</li>
+<li><a href="https://github.com/caesar0301/awesome-public-datasets">Их много</a></li>
+
+</ul>
+</section>
+</section>
+<section>
+<section id="slide-orgheadline17">
+<h2 id="orgheadline17"><span class="section-number-2">8</span> Backup</h2>
+<div class="outline-text-2" id="text-8">
+</div></section>
+<section id="slide-orgheadline16">
+<h3 id="orgheadline16"><span class="section-number-3">8.1</span> Лицензии для публикации данных</h3>
+<ul>
+<li>Если хочется усложнить жизнь пользователям - делайте свою.</li>
+<li>Public domain - отказ от всех ограничений, есть не во всех странах.</li>
+<li>Creative commons. Можно использовать, надо сослаться на
+источник. Есть варианты. Допустимо ли коммерческое использование?
+Разрешены ли производные произведения, должны ли они
+распространяться под той же лицензией?</li>
+
+</ul>
+</section>
+</section>
+</div>
+</div>
+<script src="file:////home/kna/reveal.js-3.2.0/lib/js/head.min.js"></script>
+<script src="file:////home/kna/reveal.js-3.2.0/js/reveal.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+controls: true,
+progress: true,
+history: false,
+center: true,
+slideNumber: 'c',
+rollingLinks: false,
+keyboard: true,
+overview: true,
+
+theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
+transitionSpeed: 'default',
+multiplex: {
+    secret: '', // null if client
+    id: '', // id, obtained from socket.io server
+    url: '' // Location of socket.io server
+},
+
+// Optional libraries used to extend on reveal.js
+dependencies: [
+ { src: 'file:////home/kna/reveal.js-3.2.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+ { src: 'file:////home/kna/reveal.js-3.2.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:////home/kna/reveal.js-3.2.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+ { src: 'file:////home/kna/reveal.js-3.2.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+ { src: 'file:////home/kna/reveal.js-3.2.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }]
+});
+</script>
+</body>
+</html>
