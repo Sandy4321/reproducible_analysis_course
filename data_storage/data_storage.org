@@ -1,6 +1,6 @@
 #+REVEAL_THEME: csc_rep
 #+REVEAL_TRANS: linear
-#+AUTHOR: Никита Казеев
+#+AUTHOR: Андрей Устюжанин, Никита Казеев
 #+TITLE: Хранение даных воспроизводимого эксперимента
 #+DATE: 16.04.2016
 #+LANGUAGE: ru
@@ -9,12 +9,23 @@
 # #+REVEAL_INIT_SCRIPT: parallaxBackgroundImage: 'http://wwwold.jinr.ru/img_news/15/270315/tir_1-otkrytie.jpg',
 # #+REVEAL_INIT_SCRIPT: parallaxBackgroundSize: '3739px 2617px'
 
+* Про сложность науки (другой взгляд)
+  + Сложность растёт. В XIX учёный знал всё, сейчас это невозможно.
+  + Потребность в неквалифицированном труде падает.
+  + Междисциплинарная коллаборация.
+  + А для коллаборации необходима воспроизводимость.
+* Manual labour
+  :PROPERTIES:
+  :reveal_background: LNBL_scanner_1.jpg
+  :END:
+  #+REVEAL_HTML: <style>  #orgheadline2 {display: none} </style>
 * Введение
   + Без данных исследование не может быть (вос)произведено.
   + Изменяемые (mutable) данные качественно затрудняют воспроизведение
 * Данные помещаются в RAM
   + Не проблема
   + Файл на облачном диске, web-сервере, и т.д.
+  + Версионирование?
 ** Формат
    + .csv.gz, .json.gz: кросс-платформенные, гибкие, интерпретируемые,
      медленные
@@ -51,7 +62,7 @@
    :PROPERTIES:
    :reveal_background: WLCG-snapshot-28112013.jpg
    :END:
-   #+REVEAL_HTML: <style>  #orgheadline7, #slide-orgheadline7 {background-color: white;} </style>
+   #+REVEAL_HTML: <style>  #orgheadline9, #slide-orgheadline9 {background-color: white;} </style>
    + 30 Пб в год
    + 170 дата-центров, 42 страны
 ** Уроки из ЦЕРНа
